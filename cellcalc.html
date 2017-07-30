@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Running calculator as Cell component">
+    <meta name="author" content="Raul Viigipuu">
+    <title>Run calculator</title>
+
+    <style>
+        .narrow {
+            width: 20pt;
+        }
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cell/1.2.0/cell.js"></script>
+    <script type="text/javascript">
+        RunCalc = {
+            id: "runcalc",
+            $cell: true,
+            $type: "div",
+            $init: function () {
+                this._calculate()
+            },
+            $components: [{
+                $type: "table",
+                $components: [{
+                    $type: "tr",
+                    $components: [{
+                        $type: "td",
+                        $text: "Distance:"
+                    }, {
+                        $type: "td",
+                        $components: [{
+                            $type: "input",
+                            type: "text",
+                            id: "distance",
+                            maxlength: "10",
+                            placeholder: "distance",
+                            value: 21.1,
+                            $init: function (e) {
+                                this.focus()
+                            },
+                            onkeyup: function () {
+                                this._calculate()
+                            }
+                        }, {
+                            $type: "label",
+                            id: "kmLabel",
+                            $text: " km"
+                        }]
+                    }]
+                }, {
+                    $type: "tr",
+                    $components: [{
+                        $type: "td",
+                        $text: "Time:"
+                    }, {
+                        $type: "td",
+                        $components: [{
+                            $type: "input",
+                            id: "hours",
+                            placeholder: "hh",
+                            maxlength: "2",
+                            class: "narrow",
+                            value: 1,
+                            onkeyup: function () {
+                                this._calculate()
+                            }
+                        }, {
+                            $type: "label",
+                            id: "hhLabel",
+                            $text: " hh "
+                        }, {
+                            $type: "input",
+                            id: "minutes",
+                            placeholder: "mm",
+                            maxlength: "2",
+                            class: "narrow",
+                            value: 30,
+                            onkeyup: function () {
+                                this._calculate()
+                            }
+                        }, {
+                            $type: "label",
+                            id: "mmLabel",
+                            $text: " mm "
+                        }, {
+                            $type: "input",
+                            id: "seconds",
+                            placeholder: "ss",
+                            maxlength: "2",
+                            class: "narrow",
+                            value: 0,
+                            onkeyup: function () {
+                                this._calculate()
+                            }
+                        }, {
+                            $type: "label",
+                            id: "ssLabel",
+                            $text: " ss"
+                        }]
+                    }]
+                }, {
+                    $type: "tr",
+                    $components: [{
+                        $type: "td",
+                        $text: "Pace:"
+                    }, {
+                        $type: "td",
+                        $components: [{
+                            $type: "label",
+                            id: "pace",
+                            $text: "00:00"
+                        }, {
+                            $type: "label",
+                            id: "minKmLabel",
+                            $text: " min/km"
+                        }]
+                    }]
+                }]
+            }],
+            _calculate: function () {
+                distance = parseFloat(document.querySelector("#distance").value)
+                hours = parseInt(document.querySelector("#hours").value)
+                minutes = parseInt(document.querySelector("#minutes").value)
+                seconds = parseInt(document.querySelector("#seconds").value)
+                secondsTotal = (hours * 60 * 60) + (minutes * 60) + seconds
+                paceSecondsInt = Math.round(secondsTotal / distance)
+                paceReminderInt = paceSecondsInt % 60
+                paceMinutesInt = (paceSecondsInt - paceReminderInt) / 60
+                paceStr = this._fixedLenghtNum(paceMinutesInt, 2) + ":" + this._fixedLenghtNum(paceReminderInt,
+                    2)
+                if (isNaN(paceMinutesInt) || isNaN(paceReminderInt)) {
+                    paceStr = ""
+                }
+                document.querySelector("#pace").$text = paceStr
+            },
+            _fixedLenghtNum: function (num, length) {
+                var r = "" + num
+                while (r.length < length) {
+                    r = "0" + r
+                }
+                return r
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+    <div id="runcalc"></div>
+</body>
+
+</html>
