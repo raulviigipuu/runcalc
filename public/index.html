@@ -1,82 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Running Pace Calculator</title>
-    <link rel="stylesheet" href="css/styles.css" />
-    <script src="js/script.js" defer></script>
-  </head>
-  <body>
-    <main class="container">
-      <h1>🏃 Running Pace Calculator</h1>
 
-      <div class="presets">
-        <a href="#" id="distanceMarathon">Marathon</a> ·
-        <a href="#" id="distanceHalfMarathon">Half</a> ·
-        <a href="#" id="distance10k">10k</a>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Calculate your running pace or finish time. Supports km and miles, with quick presets for Marathon, Half Marathon, and 10k." />
+
+
+<!-- OpenGraph tags -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Running Pace Calculator" />
+<meta property="og:description" content="Calculate your running pace or finish time. Choose km or miles, with quick presets for Marathon, Half Marathon, and 10k." />
+<meta property="og:url" content="https://raul.viigipuu.ee/apps/runcalc/" />
+<meta property="og:image" content="https://raul.viigipuu.ee/apps/pace/images/image.jpg" />
+<meta property="og:locale" content="en_US" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Running Pace Calculator" />
+<meta name="twitter:description" content="Calculate your running pace or finish time. Choose km or miles, with quick presets for Marathon, Half Marathon, and 10k." />
+<meta name="twitter:image" content="https://raul.viigipuu.ee/apps/runcalc/images/image.jpg" />
+<meta name="twitter:url" content="https://raul.viigipuu.ee/apps/runcalc/" />
+
+
+  <link rel="canonical" href="https://raul.viigipuu.ee/apps/runcalc" />
+
+  <title>Running Pace Calculator</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="js/script.js" defer></script>
+</head>
+
+<body>
+  <main class="container">
+    <h1>🏃 Running Pace Calculator</h1>
+
+    <div class="presets">
+      <a href="#" id="distanceMarathon">Marathon</a> ·
+      <a href="#" id="distanceHalfMarathon">Half</a> ·
+      <a href="#" id="distance10k">10k</a>
+    </div>
+
+    <p class="mode-toggle">
+      <a href="#" id="toggleMode">🔁 Switch to Pace Input</a>
+    </p>
+
+    <form id="paceForm" autocomplete="off">
+      <div class="form-group">
+        <label for="distanceInput">Distance</label>
+        <div class="distance-row">
+          <input type="number" step="any" id="distanceInput" placeholder="e.g. 5" />
+          <label for="unitsSelect" class="visually-hidden">Units</label>
+          <select id="unitsSelect">
+            <option value="km">km</option>
+            <option value="miles">miles</option>
+          </select>
+        </div>
       </div>
 
-      <p class="mode-toggle">
-        <a href="#" id="toggleMode">🔁 Switch to Pace Input</a>
-      </p>
-
-      <form id="paceForm" autocomplete="off">
-        <div class="form-group">
-          <label for="distanceInput">Distance</label>
-          <div class="distance-row">
-            <input
-              type="number"
-              step="any"
-              id="distanceInput"
-              placeholder="e.g. 5"
-            />
-            <label for="unitsSelect" class="visually-hidden">Units</label>
-            <select id="unitsSelect">
-              <option value="km">km</option>
-              <option value="miles">miles</option>
-            </select>
+      <div class="form-group">
+        <label for="hoursInput">Time</label>
+        <div class="time-inputs">
+          <div class="time-field">
+            <input type="number" min="0" id="hoursInput" placeholder="0" />
+            <span>hh</span>
+          </div>
+          <div class="time-field">
+            <input type="number" min="0" id="minutesInput" placeholder="0" />
+            <span>mm</span>
+          </div>
+          <div class="time-field">
+            <input type="number" min="0" id="secondsInput" placeholder="0" />
+            <span>ss</span>
           </div>
         </div>
+      </div>
 
-        <div class="form-group">
-          <label for="hoursInput">Time</label>
-          <div class="time-inputs">
-            <div class="time-field">
-              <input type="number" min="0" id="hoursInput" placeholder="0" />
-              <span>hh</span>
-            </div>
-            <div class="time-field">
-              <input type="number" min="0" id="minutesInput" placeholder="0" />
-              <span>mm</span>
-            </div>
-            <div class="time-field">
-              <input type="number" min="0" id="secondsInput" placeholder="0" />
-              <span>ss</span>
-            </div>
-          </div>
+      <div class="form-group" id="paceGroup" style="display: none">
+        <label for="paceInput">Pace</label>
+        <div class="pace-input-row">
+          <input type="text" id="paceInput" placeholder="e.g. 5:00" />
+          <span id="paceUnits">min/km</span>
         </div>
+      </div>
 
-        <div class="form-group" id="paceGroup" style="display: none">
-          <label for="paceInput">Pace</label>
-          <div class="pace-input-row">
-            <input type="text" id="paceInput" placeholder="e.g. 5:00" />
-            <span id="paceUnits">min/km</span>
-          </div>
-        </div>
+      <div class="result">
+        <p id="resultLabel">
+          ⏱️ <span id="resultType">Pace</span>:
+          <strong id="paceLabel">–</strong>
+          <span id="paceUnits">min/km</span>
+        </p>
+      </div>
+    </form>
+  </main>
 
-        <div class="result">
-          <p id="resultLabel">
-            ⏱️ <span id="resultType">Pace</span>:
-            <strong id="paceLabel">–</strong>
-            <span id="paceUnits">min/km</span>
-          </p>
-        </div>
-      </form>
-    </main>
+  <footer>
+    <p>🍪 This site does not use cookies.</p>
+  </footer>
+</body>
 
-    <footer>
-      <p>🍪 This site does not use cookies.</p>
-    </footer>
-  </body>
 </html>
