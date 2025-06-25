@@ -2,54 +2,54 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
-    content="Calculate your running pace or finish time. Supports km and miles, with quick presets for Marathon, Half Marathon, and 10k." />
+    content="Calculate your running pace or finish time. Supports km and miles, with quick presets for Marathon, Half Marathon, and 10k.">
 
 
   <!-- OpenGraph tags -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Running Pace Calculator" />
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Running Pace Calculator">
   <meta property="og:description"
-    content="Calculate your running pace or finish time. Choose km or miles, with quick presets for Marathon, Half Marathon, and 10k." />
-  <meta property="og:url" content="https://raul.viigipuu.ee/apps/runcalc/" />
-  <meta property="og:image" content="https://raul.viigipuu.ee/apps/pace/images/image.jpg" />
-  <meta property="og:locale" content="en_US" />
+    content="Calculate your running pace or finish time. Choose km or miles, with quick presets for Marathon, Half Marathon, and 10k.">
+  <meta property="og:url" content="https://raul.viigipuu.ee/apps/runcalc/">
+  <meta property="og:image" content="https://raul.viigipuu.ee/apps/pace/images/image.jpg">
+  <meta property="og:locale" content="en_US">
 
   <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Running Pace Calculator" />
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Running Pace Calculator">
   <meta name="twitter:description"
-    content="Calculate your running pace or finish time. Choose km or miles, with quick presets for Marathon, Half Marathon, and 10k." />
-  <meta name="twitter:image" content="https://raul.viigipuu.ee/apps/runcalc/images/image.jpg" />
-  <meta name="twitter:url" content="https://raul.viigipuu.ee/apps/runcalc/" />
+    content="Calculate your running pace or finish time. Choose km or miles, with quick presets for Marathon, Half Marathon, and 10k.">
+  <meta name="twitter:image" content="https://raul.viigipuu.ee/apps/runcalc/images/image.jpg">
+  <meta name="twitter:url" content="https://raul.viigipuu.ee/apps/runcalc/">
 
 
-  <link rel="canonical" href="https://raul.viigipuu.ee/apps/runcalc" />
+  <link rel="canonical" href="https://raul.viigipuu.ee/apps/runcalc">
 
   <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "Running Pace Calculator",
-  "url": "https://raul.viigipuu.ee/apps/runcalc/",
-  "applicationCategory": "SportsApplication",
-  "operatingSystem": "All",
-  "description": "Calculate your running pace or finish time. Choose km or miles, with quick presets for Marathon, Half Marathon, and 10k.",
-  "image": "https://raul.viigipuu.ee/apps/runcalc/images/image.jpg",
-  "author": {
-    "@type": "Person",
-    "name": "Raul Viigipuu",
-    "url": "https://raul.viigipuu.ee"
-  },
-  "browserRequirements": "Requires JavaScript enabled",
-  "inLanguage": "en"
-}
-</script>
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Running Pace Calculator",
+    "url": "https://raul.viigipuu.ee/apps/runcalc/",
+    "applicationCategory": "SportsApplication",
+    "operatingSystem": "All",
+    "description": "Calculate your running pace or finish time. Choose km or miles, with quick presets for Marathon, Half Marathon, and 10k.",
+    "image": "https://raul.viigipuu.ee/apps/runcalc/images/image.jpg",
+    "author": {
+      "@type": "Person",
+      "name": "Raul Viigipuu",
+      "url": "https://raul.viigipuu.ee"
+    },
+    "browserRequirements": "Requires JavaScript enabled",
+    "inLanguage": "en"
+  }
+  </script>
 
   <title>Running Pace Calculator</title>
-  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/styles.css">
   <script src="js/script.js" defer></script>
 </head>
 
@@ -71,7 +71,7 @@
       <div class="form-group">
         <label for="distanceInput">Distance</label>
         <div class="distance-row">
-          <input type="number" step="any" id="distanceInput" placeholder="e.g. 5" />
+          <input type="number" step="any" id="distanceInput" placeholder="e.g. 5">
           <label for="unitsSelect" class="visually-hidden">Units</label>
           <select id="unitsSelect">
             <option value="km">km</option>
@@ -84,15 +84,15 @@
         <label for="hoursInput">Time</label>
         <div class="time-inputs">
           <div class="time-field">
-            <input type="number" min="0" id="hoursInput" placeholder="0" />
+            <input type="number" min="0" id="hoursInput" placeholder="0">
             <span>hh</span>
           </div>
           <div class="time-field">
-            <input type="number" min="0" id="minutesInput" placeholder="0" />
+            <input type="number" min="0" id="minutesInput" placeholder="0">
             <span>mm</span>
           </div>
           <div class="time-field">
-            <input type="number" min="0" id="secondsInput" placeholder="0" />
+            <input type="number" min="0" id="secondsInput" placeholder="0">
             <span>ss</span>
           </div>
         </div>
@@ -101,8 +101,8 @@
       <div class="form-group" id="paceGroup" style="display: none">
         <label for="paceInput">Pace</label>
         <div class="pace-input-row">
-          <input type="text" id="paceInput" placeholder="e.g. 5:00" />
-          <span id="paceUnits">min/km</span>
+          <input type="text" id="paceInput" placeholder="e.g. 5:00">
+          <span class="paceUnits">min/km</span>
         </div>
       </div>
 
@@ -110,7 +110,7 @@
         <p id="resultLabel">
           ⏱️ <span id="resultType">Pace</span>:
           <strong id="paceLabel">–</strong>
-          <span id="paceUnits">min/km</span>
+          <span class="paceUnits">min/km</span>
         </p>
       </div>
     </form>

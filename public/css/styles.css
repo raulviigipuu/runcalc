@@ -238,7 +238,7 @@ select {
 }
 
 .result #resultType,
-.result #paceUnits {
+.result .paceUnits {
   font-weight: 400;
 }
 

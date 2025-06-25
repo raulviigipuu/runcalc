@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ? "Finish Time"
       : "Pace";
 
-    document.querySelectorAll("#paceUnits").forEach((el) => {
+    document.querySelectorAll(".paceUnits").forEach((el) => {
       el.style.display = isPaceMode ? "none" : "inline";
     });
 
@@ -218,7 +218,7 @@ function updatePresetHighlight() {
 
 function handleUnitChange() {
   const toKm = elems.units.value === "km";
-  document.querySelectorAll("#paceUnits").forEach((el) => {
+  document.querySelectorAll(".paceUnits").forEach((el) => {
     el.textContent = toKm ? "min/km" : "min/mile";
   });
 
